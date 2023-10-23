@@ -10,8 +10,20 @@ const launch = {
   upcoming: true,
   success: true,
 }
+const launchTwo = {
+  flightNumber: 101,
+  mission: "Kepler Exploration Y",
+  rocket: "Explorer IS2",
+  launchDate: new Date("June 17, 2025"),
+  destination: "Kepler-1652 b",
+  customers: ["Space A", "Space B"],
+  upcoming: true,
+  success: true,
+ 
+}
 
 launches.set(launch.flightNumber, launch)
+launches.set(launchTwo.flightNumber, launchTwo)
 
 module.exports = {
   launches,

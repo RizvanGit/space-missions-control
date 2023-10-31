@@ -29,10 +29,15 @@ const corsOptionsDelegate = function (req, callback) {
 app.use(cors(corsOptionsDelegate));
 app.use(morgan("short"));
 
+// Express built-in middleware, that checks if there is a JSON to convert
+//  and passes it further in request.body
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, "..", "public")));
-app.use(planetsRouter);
-app.use(launchesRouter);
+
+app.use('/planets', planetsRouter);
+app.use('/launches', launchesRouter);
+
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });

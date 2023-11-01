@@ -11,7 +11,6 @@ function httpGetAllLaunches(req, res) {
 
 function httpAddNewLaunch(req, res) {
   const launch = req.body;
-  launch.launchDate = new Date(launch.launchDate);
 
   if (
     !launch.mission ||
@@ -24,6 +23,7 @@ function httpAddNewLaunch(req, res) {
     });
   }
 
+  launch.launchDate = new Date(launch.launchDate);
   addNewLaunch(launch);
 
   if (isNaN(launch.launchDate)) {

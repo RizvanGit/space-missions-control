@@ -30,10 +30,6 @@ function loadPlanetsData () {
         reject(error)
       })
       .on("end", () => {
-        console.log(habitablePlanets.map((planet) => {
-          return planet["kepler_name"]
-        }))
-        console.log("COMPLETE! Habitable planets: ", habitablePlanets.length)
         resolve()
       })
   })

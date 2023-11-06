@@ -1,8 +1,6 @@
 const launchesDatabase = require("./launches.mongo");
 const planets = require('./planets.mongo')
 
-const launches = new Map()
-
 async function getLatestFlightNumber(){
   const latestLaunch = await launchesDatabase
     .findOne({})

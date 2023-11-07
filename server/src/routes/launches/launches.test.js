@@ -3,6 +3,8 @@ const { mongoConnect, mongoDisconnect } = require("../../services/mongo")
 
 const app = require("../../app");
 
+const launchesPath = "/v1/launches"
+
 describe('Launches API', () => {
 
   beforeAll(async () => {
@@ -13,16 +15,16 @@ describe('Launches API', () => {
   });
   
   
-  describe("Test GET /launches", () => {
+  describe(`Test GET ${launchesPath}`, () => {
     test("It should respond with 200 success", async () => {
       await request(app)
-      .get("/launches")
+      .get(launchesPath)
       .expect("Content-Type", /json/)
       .expect(200);
     });
   });
 
-  describe("Test POST /launch", () => {
+  describe(`Test POST ${launchesPath}`, () => {
     const completeLaunchData = {
       mission: "Discovering Planet for test",
       rocket: "Super Test Rocket",
@@ -45,7 +47,7 @@ describe('Launches API', () => {
 
     test("It should respond with 201 created", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post(launchesPath)
         .send(completeLaunchData)
         .expect("Content-Type", /json/)
         .expect(201);
@@ -59,7 +61,7 @@ describe('Launches API', () => {
 
     test("It should catch missing required properties", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post(launchesPath)
         .send(launchDataWithoutDate)
         .expect("Content-Type", /json/)
         .expect(400);
@@ -71,7 +73,7 @@ describe('Launches API', () => {
 
     test("It should catch invalid dates", async () => {
       const response = await request(app)
-        .post("/launches")
+        .post(launchesPath)
         .send(launchDataWithInvalidDate)
         .expect("Content-Type", /json/)
         .expect(404);

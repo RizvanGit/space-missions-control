@@ -11,7 +11,7 @@ Run <code>npm run install</code> in root directory, to install both server and c
 
 # Running application
 
-To run development server type <code>npm run watch</code> in root directory of the project.
+To run development server <code>npm run watch</code> in root directory of the project.
 <br />
 To run deploy build execute <code>npm run build</code> in root directory of the project.
 
